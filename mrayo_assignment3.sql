@@ -1,4 +1,4 @@
-/* Michael Vincent Rayo
+/* Name Omitted
    Assignment 3
    CS150A, Spring 2020
 */
