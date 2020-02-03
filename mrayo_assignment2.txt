@@ -1,0 +1,319 @@
+mysql> source /Users/mvr/Desktop/mrayo_assignment2.sql
+--------------
+/* Michael Vincent Rayo 
+   Assignment 2
+   CS 150A, Spring 2020
+*/
+
+/* Query 0 */
+SELECT user(), current_date()
+--------------
+
++----------------+----------------+
+| user()         | current_date() |
++----------------+----------------+
+| root@localhost | 2020-01-31     |
++----------------+----------------+
+1 row in set (0.00 sec)
+
+--------------
+/* Query 1 */
+SELECT product_name, description FROM product WHERE category_id < 41
+--------------
+
++------------------------+---------------------------------------------------------------------------------------------------------------------------------+
+| product_name           | description                                                                                                                     |
++------------------------+---------------------------------------------------------------------------------------------------------------------------------+
+| Dell XPS 8700          | Dell XPS 8700 Desktop , Intel Core i7, 4GB Graphics                                                                             |
+| Lenovo H50 Desktop     | Lenovo H50 Desktop , Intel Core i7, 2GB Graphics                                                                                |
+| HP Envy 750qe Desktop  | HP Envy 750qe Desktop , Intel Core i7, 4GB Graphics, Windows 10.                                                                |
+| Toshiba Satellite S55T | Toshiba Satellite S55T Touchscreen Laptop , Intel Core i7 , 4GB Graphics | 4K Ultra HD.                                         |
+| HP Pavilion 15t Star   | HP Pavilion 15t Star Wars Special Edition Touchscreen Laptop, Intel Core i7, 1080p, 2GB Graphics, Backlit Keyboard , Windows 10 |
+| Dell Inspiron 17 5000  | Dell Inspiron 17 5000 Series Touchscreen Laptop, Intel Core i7, 4GB Graphics, 1080p                                             |
+| Classical Music        | The best classical music                                                                                                        |
+| Pop 3                  | The best popular music                                                                                                          |
+| Space Force 9          | Adventures of heroes                                                                                                            |
+| From Another Planet    | Alien from another planet lands on Earth                                                                                        |
+| Supernova              | A star explodes                                                                                                                 |
++------------------------+---------------------------------------------------------------------------------------------------------------------------------+
+11 rows in set (0.00 sec)
+
+--------------
+/* Query 2 */
+SELECT last_name, first_name, customer_id FROM customer WHERE customer_id <> 77779
+--------------
+
++-----------+------------+-------------+
+| last_name | first_name | customer_id |
++-----------+------------+-------------+
+| Sherwood  | Allan      |       11119 |
+| Zimmer    | Barry      |       22229 |
+| Brown     | Christine  |       33339 |
+| Goldstein | David      |       44449 |
+| Valentino | Erin       |       55559 |
+| Wilson    | Frank Lee  |       66669 |
+| Esway     | Heather    |       88889 |
++-----------+------------+-------------+
+7 rows in set (0.00 sec)
+
+--------------
+/* Query 3 */
+SELECT 
+    last_name, first_name, customer_id, email_address 
+FROM 
+    customer 
+WHERE 
+    customer_id = 88889
+--------------
+
++-----------+------------+-------------+----------------------+
+| last_name | first_name | customer_id | email_address        |
++-----------+------------+-------------+----------------------+
+| Esway     | Heather    |       88889 | heatheresway@mac.com |
++-----------+------------+-------------+----------------------+
+1 row in set (0.00 sec)
+
+--------------
+/* Query 4 */
+SELECT 
+    item_id, 
+    item_price, 
+    discount_amount,
+    quantity,
+    quantity * item_price AS price_total,
+    discount_amount * quantity AS discount_total,
+    (item_price - discount_amount) * quantity AS item_total 
+FROM
+    orderitems
+WHERE
+    ((item_price - discount_amount) * quantity) > 500
+ORDER BY
+    item_total
+--------------
+
++---------+------------+-----------------+----------+-------------+----------------+------------+
+| item_id | item_price | discount_amount | quantity | price_total | discount_total | item_total |
++---------+------------+-----------------+----------+-------------+----------------+------------+
+|      18 |     599.00 |           24.00 |        1 |      599.00 |          24.00 |     575.00 |
+|       3 |     989.99 |          197.80 |        1 |      989.99 |         197.80 |     792.19 |
+|       5 |     999.00 |          199.87 |        1 |      999.00 |         199.87 |     799.13 |
+|      11 |     999.00 |          199.87 |        1 |      999.00 |         199.87 |     799.13 |
+|      15 |     999.00 |          199.87 |        1 |      999.00 |         199.87 |     799.13 |
+|       1 |    1199.00 |          359.70 |        1 |     1199.00 |         359.70 |     839.30 |
+|      21 |    1415.00 |          551.46 |        1 |     1415.00 |         551.46 |     863.54 |
+|       4 |    2517.00 |         1308.84 |        1 |     2517.00 |        1308.84 |    1208.16 |
+|       6 |    1299.00 |            0.00 |        1 |     1299.00 |           0.00 |    1299.00 |
+|       9 |    1299.00 |            0.00 |        1 |     1299.00 |           0.00 |    1299.00 |
+|      10 |    1299.00 |            0.00 |        1 |     1299.00 |           0.00 |    1299.00 |
+|       7 |    1199.00 |          359.70 |        2 |     2398.00 |         719.40 |    1678.60 |
++---------+------------+-----------------+----------+-------------+----------------+------------+
+12 rows in set (0.00 sec)
+
+--------------
+/* Query 5 */
+SELECT
+    item_id,
+    order_id,
+    item_price
+FROM
+    orderitems
+WHERE
+    item_price < 1000
+ORDER BY
+    item_price DESC
+--------------
+
++---------+----------+------------+
+| item_id | order_id | item_price |
++---------+----------+------------+
+|       5 |        3 |     999.00 |
+|      11 |        7 |     999.00 |
+|      15 |        9 |     999.00 |
+|       3 |        2 |     989.99 |
+|      18 |       10 |     599.00 |
+|      23 |        7 |     500.99 |
+|      22 |       11 |     200.99 |
+|      12 |        7 |      99.99 |
+|       2 |        1 |      49.99 |
+|      14 |        8 |      49.99 |
+|      16 |        9 |      49.99 |
+|      17 |       10 |      25.99 |
+|      20 |        2 |      19.95 |
+|      13 |        7 |      14.99 |
+|       8 |        4 |      13.95 |
++---------+----------+------------+
+15 rows in set (0.00 sec)
+
+--------------
+/* Query 6 */
+SELECT customer_id, email_address FROM customer
+--------------
+
++-------------+-----------------------------+
+| customer_id | email_address               |
++-------------+-----------------------------+
+|       11119 | allan.sherwood@yahoo.com    |
+|       22229 | barryz@gmail.com            |
+|       33339 | christineb@solarone.com     |
+|       44449 | david.goldstein@hotmail.com |
+|       55559 | erinv@gmail.com             |
+|       66669 | frankwilson@sbcglobal.net   |
+|       77779 | gary_hernandez@yahoo.com    |
+|       88889 | heatheresway@mac.com        |
++-------------+-----------------------------+
+8 rows in set (0.00 sec)
+
+--------------
+/* Query 7 */
+SELECT DISTINCT customer_id FROM orders
+--------------
+
++-------------+
+| customer_id |
++-------------+
+|       11119 |
+|       22229 |
+|       33339 |
+|       44449 |
+|       55559 |
+|       66669 |
+|       77779 |
++-------------+
+7 rows in set (0.00 sec)
+
+--------------
+/* Query 8 */
+SELECT
+    product_name,
+    list_price,
+    discount_percent,
+    ((discount_percent / 100 ) * list_price) AS discount_amount,
+    (list_price - ((discount_percent / 100) * list_price)) AS discount_price
+FROM product
+ORDER BY discount_price
+LIMIT 5
+--------------
+
++------------------+------------+------------------+-----------------+----------------+
+| product_name     | list_price | discount_percent | discount_amount | discount_price |
++------------------+------------+------------------+-----------------+----------------+
+| 2412: The Return |      14.99 |            30.00 |      4.49700000 |    10.49300000 |
+| Space Force 9    |      13.95 |            20.00 |      2.79000000 |    11.16000000 |
+| Modern Science   |      19.95 |            20.00 |      3.99000000 |    15.96000000 |
+| Supernova        |      25.99 |            15.00 |      3.89850000 |    22.09150000 |
+| Chemistry        |      30.00 |            20.00 |      6.00000000 |    24.00000000 |
++------------------+------------+------------------+-----------------+----------------+
+5 rows in set (0.00 sec)
+
+--------------
+/* Query 9 */
+SELECT CONCAT(last_name, ', ', first_name) AS full_name FROM employee
+--------------
+
++-----------------+
+| full_name       |
++-----------------+
+| Lee, Marwan     |
+| Alexander, John |
+| Stuart, Mary    |
+| Orange, William |
+| Stuart, Anne    |
+| Griffith, John  |
+| Stuart, George  |
+| Victor, George  |
++-----------------+
+8 rows in set (0.00 sec)
+
+--------------
+/* Query 10 */
+SELECT
+    customer_id,
+    line1,
+    line2,
+    CONCAT(city, ', ', state) AS city_and_state,
+    zip_code
+FROM address
+--------------
+
++-------------+-------------------------+---------+--------------------+----------+
+| customer_id | line1                   | line2   | city_and_state     | zip_code |
++-------------+-------------------------+---------+--------------------+----------+
+|       11119 | 100 East Ridgewood Ave. |         | Paramus, NJ        | 07652    |
+|       11119 | 21 Rosewood Rd.         |         | Woodcliff Lake, NJ | 07677    |
+|       22229 | 16285 Wendell St.       |         | Omaha, NE          | 68135    |
+|       33339 | 19270 NW Cornell Rd.    |         | Beaverton, OR      | 97006    |
+|       44449 | 186 Vermont St.         | Apt. 2  | San Francisco, CA  | 94110    |
+|       44449 | 1374 46th Ave.          |         | San Francisco, CA  | 94129    |
+|       55559 | 6982 Palm Ave.          |         | Fresno, CA         | 93711    |
+|       66669 | 23 Mountain View St.    |         | Denver, CO         | 80208    |
+|       77779 | 7361 N. 41st St.        | Apt. B  | New York, NY       | 10012    |
+|       77779 | 3829 Broadway Ave.      | Suite 2 | New York, NY       | 10012    |
+|       88889 | 2381 Buena Vista St.    |         | Los Angeles, CA    | 90023    |
+|       88889 | 291 W. Hollywood Blvd.  |         | Los Angeles, CA    | 90024    |
++-------------+-------------------------+---------+--------------------+----------+
+12 rows in set (0.00 sec)
+
+--------------
+/* Query 11 */
+SELECT category_id, product_name
+FROM product
+--------------
+
++-------------+------------------------+
+| category_id | product_name           |
++-------------+------------------------+
+|          11 | Dell XPS 8700          |
+|          11 | Lenovo H50 Desktop     |
+|          11 | HP Envy 750qe Desktop  |
+|          11 | Toshiba Satellite S55T |
+|          11 | HP Pavilion 15t Star   |
+|          11 | Dell Inspiron 17 5000  |
+|          21 | Classical Music        |
+|          21 | Pop 3                  |
+|          51 | 2412: The Return       |
+|          51 | Z Files                |
+|          41 | Modern Science         |
+|          41 | Chemistry              |
+|          31 | Space Force 9          |
+|          31 | From Another Planet    |
+|          31 | Supernova              |
+|          61 | HP Color LaserJet      |
+|          61 | HP LaserJet Pro        |
+|          61 | HP LaserJet Pro        |
++-------------+------------------------+
+18 rows in set (0.00 sec)
+
+--------------
+/* Query 12 */
+SELECT 
+    product_name,
+    list_price,
+    list_price + (list_price * 0.08) AS new_list_price
+FROM product
+--------------
+
++------------------------+------------+----------------+
+| product_name           | list_price | new_list_price |
++------------------------+------------+----------------+
+| Dell XPS 8700          |     999.00 |      1078.9200 |
+| Lenovo H50 Desktop     |    1199.00 |      1294.9200 |
+| HP Envy 750qe Desktop  |    2517.00 |      2718.3600 |
+| Toshiba Satellite S55T |     989.99 |      1069.1892 |
+| HP Pavilion 15t Star   |    1299.00 |      1402.9200 |
+| Dell Inspiron 17 5000  |    1415.00 |      1528.2000 |
+| Classical Music        |      99.99 |       107.9892 |
+| Pop 3                  |      49.99 |        53.9892 |
+| 2412: The Return       |      14.99 |        16.1892 |
+| Z Files                |      49.99 |        53.9892 |
+| Modern Science         |      19.95 |        21.5460 |
+| Chemistry              |      30.00 |        32.4000 |
+| Space Force 9          |      13.95 |        15.0660 |
+| From Another Planet    |      49.99 |        53.9892 |
+| Supernova              |      25.99 |        28.0692 |
+| HP Color LaserJet      |     599.00 |       646.9200 |
+| HP LaserJet Pro        |     200.99 |       217.0692 |
+| HP LaserJet Pro        |     500.99 |       541.0692 |
++------------------------+------------+----------------+
+18 rows in set (0.00 sec)
+
+mysql> notee
