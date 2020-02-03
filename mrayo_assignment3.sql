@@ -11,10 +11,6 @@ SELECT first_name, last_name, salary
 FROM employee 
 WHERE (salary <> 3400 OR salary <> 6000) AND last_name LIKE 'V%';
 
-SELECT first_name, last_name, salary
-FROM employee 
-WHERE NOT IN(3400,6000) AND last_name LIKE 'V%';
-
 /* Query 3 */
 SELECT order_id, order_date, ship_date FROM orders WHERE ship_date IS NULL;
 
