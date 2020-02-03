@@ -1,4 +1,4 @@
-/* Name Omitted
+/* Michael Vincent Rayo
    Assignment 3
    CS150A, Spring 2020
 */
@@ -42,7 +42,7 @@ WHERE ship_date > CAST('2015-03-10' AS DATE);
 /* Query 8 */
 SELECT order_id, order_date
 FROM orders 
-WHERE order_date >= CAST('2015-04-01' AS DATE);
+WHERE order_date <= CAST('2015-04-01' AS DATE);
 
 /* Query 9 */
 SELECT product_id, product_code, product_name
@@ -55,12 +55,13 @@ FROM product
 WHERE (category_id IN(21,31) AND vendor_id IN (5,9)) AND list_price >= 1100.00;
 
 /* Query 11 */
-SELECT * FROM orders WHERE CAST(order_date AS DATE)+2 >= CAST(ship_date AS DATE);
+SELECT *FROM orders 
+WHERE NOT CAST(order_date AS DATE)+2 <= CAST(ship_date AS DATE);
 
 /* Query 12 */
 SELECT order_id, customer_id, order_date 
-FROM orders 
-WHERE CAST(ship_date AS DATE) >= (CAST(order_date AS DATE)+2);
+FROM orders
+WHERE ship_date IS NOT NULL;
 
 /* Query 13 */
 SELECT DISTINCT order_id, quantity FROM orderitems;
