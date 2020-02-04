@@ -9,7 +9,7 @@ USE bookstore;
 SELECT user(), current_date();
 
 /* Query 1 */
-CREATE TABLE IF NOT EXISTS jobs (
+CREATE TABLE jobs (
     job_id INT(5) PRIMARY KEY,
     job_title VARCHAR(255),
 	min_salary INT(8),
