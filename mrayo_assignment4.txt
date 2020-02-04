@@ -5,6 +5,12 @@ mysql> source /Users/mvr/Desktop/CCSF Semesters /2020 Spring/CS150A/Assignments/
    CS150A, Spring 2020
 */
 
+USE bookstore
+--------------
+
+Query OK, 0 rows affected (0.01 sec)
+
+--------------
 /* Query 0 */
 SELECT user(), current_date()
 --------------
@@ -26,7 +32,7 @@ CREATE TABLE jobs (
 )ENGINE = INNODB
 --------------
 
-Query OK, 0 rows affected (0.08 sec)
+Query OK, 0 rows affected (0.09 sec)
 
 --------------
 /* Query 2 */
@@ -163,7 +169,7 @@ Records: 0  Duplicates: 0  Warnings: 0
 ALTER TABLE store DROP COLUMN phone_number
 --------------
 
-Query OK, 0 rows affected (0.15 sec)
+Query OK, 0 rows affected (0.22 sec)
 Records: 0  Duplicates: 0  Warnings: 0
 
 mysql> notee
