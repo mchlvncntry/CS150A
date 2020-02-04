@@ -1,4 +1,4 @@
-mysql> source /Users/mvr/Desktop/CCSF Semesters /2020 Spring/CS150A/Assignments/mrayo_assignment4.sql
+mysql> source /Users/mvr/Desktop/CCSF Semesters/2020 Spring/CS150A/Assignments/mrayo_assignment4.sql
 --------------
 /* Michael Vincent Rayo
    Assignment 4
