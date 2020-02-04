@@ -8,7 +8,7 @@ mysql> source /Users/mvr/Desktop/CCSF Semesters /2020 Spring/CS150A/Assignments/
 USE bookstore
 --------------
 
-Query OK, 0 rows affected (0.01 sec)
+Query OK, 0 rows affected (0.00 sec)
 
 --------------
 /* Query 0 */
@@ -32,7 +32,7 @@ CREATE TABLE jobs (
 )ENGINE = INNODB
 --------------
 
-Query OK, 0 rows affected (0.09 sec)
+Query OK, 0 rows affected (0.10 sec)
 
 --------------
 /* Query 2 */
@@ -150,10 +150,10 @@ SHOW TABLES
 
 --------------
 /* Query 9 */
-DROP TABLE jobs_backup
+DROP TABLE IF EXISTS jobs_backup
 --------------
 
-Query OK, 0 rows affected (0.00 sec)
+Query OK, 0 rows affected (0.01 sec)
 
 --------------
 /* Query 10 */
@@ -161,7 +161,7 @@ ALTER TABLE store
 ADD phone_number INT(10)
 --------------
 
-Query OK, 0 rows affected (0.02 sec)
+Query OK, 0 rows affected (0.01 sec)
 Records: 0  Duplicates: 0  Warnings: 0
 
 --------------
@@ -169,7 +169,7 @@ Records: 0  Duplicates: 0  Warnings: 0
 ALTER TABLE store DROP COLUMN phone_number
 --------------
 
-Query OK, 0 rows affected (0.22 sec)
+Query OK, 0 rows affected (0.20 sec)
 Records: 0  Duplicates: 0  Warnings: 0
 
-mysql> notee
+mysql> notee;
