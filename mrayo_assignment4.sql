@@ -3,6 +3,8 @@
    CS150A, Spring 2020
 */
 
+USE bookstore;
+
 /* Query 0 */
 SELECT user(), current_date();
 
