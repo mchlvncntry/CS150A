@@ -3,18 +3,17 @@
    CS150A, Spring 2020
 */
 
-USE bookstore;
-
 /* Query 0 */
 SELECT user(), current_date();
+USE bookstore;
 
 /* Query 1 */
 CREATE TABLE jobs (
-    job_id INT(5) PRIMARY KEY,
+    job_id INT(5),
     job_title VARCHAR(255),
 	min_salary INT(8),
     max_salary INT(10)
-)ENGINE = INNODB;
+);
 
 /* Query 2 */
 insert into jobs(job_id, job_title, min_salary, max_salary)
