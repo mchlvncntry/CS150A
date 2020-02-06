@@ -1,16 +1,10 @@
-mysql> source /Users/mvr/Desktop/CCSF Semesters/2020 Spring/CS150A/Assignments/mrayo_assignment4.sql
+mysql> source /Users/mvr/Desktop/CCSFSemesters/2020 Spring/CS150A/Assignments/mrayo_assignment4.sql
 --------------
 /* Michael Vincent Rayo
    Assignment 4
    CS150A, Spring 2020
 */
 
-USE bookstore
---------------
-
-Query OK, 0 rows affected (0.00 sec)
-
---------------
 /* Query 0 */
 SELECT user(), current_date()
 --------------
@@ -18,21 +12,22 @@ SELECT user(), current_date()
 +----------------+----------------+
 | user()         | current_date() |
 +----------------+----------------+
-| root@localhost | 2020-02-03     |
+| root@localhost | 2020-02-06     |
 +----------------+----------------+
 1 row in set (0.00 sec)
 
+Database changed
 --------------
 /* Query 1 */
 CREATE TABLE jobs (
-    job_id INT(5) PRIMARY KEY,
+    job_id INT(5),
     job_title VARCHAR(255),
 	min_salary INT(8),
     max_salary INT(10)
-)ENGINE = INNODB
+)
 --------------
 
-Query OK, 0 rows affected (0.10 sec)
+Query OK, 0 rows affected (0.18 sec)
 
 --------------
 /* Query 2 */
@@ -87,7 +82,7 @@ DESC jobs
 +------------+--------------+------+-----+---------+-------+
 | Field      | Type         | Null | Key | Default | Extra |
 +------------+--------------+------+-----+---------+-------+
-| job_id     | int(5)       | NO   | PRI | NULL    |       |
+| job_id     | int(5)       | YES  |     | NULL    |       |
 | job_title  | varchar(255) | YES  |     | NULL    |       |
 | min_salary | int(8)       | YES  |     | NULL    |       |
 | max_salary | int(10)      | YES  |     | NULL    |       |
@@ -102,7 +97,7 @@ DESCRIBE jobs
 +------------+--------------+------+-----+---------+-------+
 | Field      | Type         | Null | Key | Default | Extra |
 +------------+--------------+------+-----+---------+-------+
-| job_id     | int(5)       | NO   | PRI | NULL    |       |
+| job_id     | int(5)       | YES  |     | NULL    |       |
 | job_title  | varchar(255) | YES  |     | NULL    |       |
 | min_salary | int(8)       | YES  |     | NULL    |       |
 | max_salary | int(10)      | YES  |     | NULL    |       |
@@ -115,7 +110,7 @@ DESCRIBE jobs
 ALTER TABLE jobs DROP COLUMN date_added
 --------------
 
-Query OK, 0 rows affected (0.23 sec)
+Query OK, 0 rows affected (0.22 sec)
 Records: 0  Duplicates: 0  Warnings: 0
 
 --------------
@@ -169,7 +164,6 @@ Records: 0  Duplicates: 0  Warnings: 0
 ALTER TABLE store DROP COLUMN phone_number
 --------------
 
-Query OK, 0 rows affected (0.20 sec)
+Query OK, 0 rows affected (0.22 sec)
 Records: 0  Duplicates: 0  Warnings: 0
 
-mysql> notee;
