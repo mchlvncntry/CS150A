@@ -1,0 +1,120 @@
+mysql> source /Users/mvr/Desktop/CCSFSemesters/2020 Spring/CS150A/Assignments/mvrayo_assignment6.sql
+--------------
+/* Michael Vincent Rayo
+   Assignment 6
+   CS150A, Spring 2020
+*/
+
+/* Query 0 */
+SELECT user(), current_date()
+--------------
+
++----------------+----------------+
+| user()         | current_date() |
++----------------+----------------+
+| root@localhost | 2020-02-17     |
++----------------+----------------+
+1 row in set (0.00 sec)
+
+Database changed
+--------------
+/* Query 1 */
+INSERT INTO category(category_id, category_name)
+VALUES(81, 'Musical Instruments')
+--------------
+
+Query OK, 1 row affected (0.00 sec)
+
+--------------
+/* Query 2 */
+UPDATE category SET category_name = 'Cameras and Camcorders'
+WHERE category_id = 81
+--------------
+
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+--------------
+/* Query 3 */
+INSERT INTO product (product_id, category_id, product_code, product_name,
+description, list_price, discount_percent, date_added, vendor_id)
+VALUES (17234, 81, 'Camera640', 'Canon', 'Canon EOS Rebel T5 DSLR Camera',
+799.99, 0, '2017-04-30 13:14:15', 2)
+--------------
+
+Query OK, 1 row affected (0.00 sec)
+
+--------------
+/* Query 4 */
+UPDATE product SET discount_percent = 20 WHERE product_id = 17234
+--------------
+
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+--------------
+/* Query 5 */
+DELETE FROM product WHERE category_id = 81
+--------------
+
+Query OK, 1 row affected (0.00 sec)
+
+--------------
+DELETE FROM category WHERE category_id = 81
+--------------
+
+Query OK, 1 row affected (0.01 sec)
+
+--------------
+/* Query 6 */
+UPDATE orders SET card_type = 'American Express' WHERE order_id = 9
+--------------
+
+Query OK, 0 rows affected (0.00 sec)
+Rows matched: 1  Changed: 0  Warnings: 0
+
+--------------
+/* Query 7 */
+DELETE FROM orderitems WHERE order_id = 5
+--------------
+
+Query OK, 0 rows affected (0.00 sec)
+
+--------------
+DELETE FROM orders WHERE order_id = 5
+--------------
+
+Query OK, 0 rows affected (0.00 sec)
+
+--------------
+/* Query 8 */
+UPDATE employee SET salary = 6500 WHERE salary = 6000
+--------------
+
+Query OK, 0 rows affected (0.00 sec)
+Rows matched: 0  Changed: 0  Warnings: 0
+
+--------------
+/* Query 9 */
+INSERT INTO customer(customer_id, email_address, password, first_name, last_name)
+VALUES (99999, 'rick@raven.com', '', 'Rick', 'Raven')
+--------------
+
+ERROR 1062 (23000): Duplicate entry '99999' for key 'PRIMARY'
+--------------
+/* Query 10 */
+UPDATE customer SET password = 'secret' WHERE email_address = 'rick@raven.com'
+--------------
+
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+--------------
+/* Query 11 */
+UPDATE customer SET password = 'reset'
+--------------
+
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 9  Changed: 1  Warnings: 0
+
+mysql> notee;
