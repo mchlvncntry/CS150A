@@ -1,4 +1,4 @@
-mysql> source /Users/mvr/Desktop/CCSFSemesters/2020 Spring/CS150A/Assignments/mvrayo_assignment5.sql;
+mysql> source /Users/mvr/Desktop/CCSFSemesters/2020Spring/CS150A/Assignments/mvrayo_assignment5.sql
 --------------
 /* Michael Vincent Rayo
    Assignment 5
@@ -12,7 +12,7 @@ SELECT user(), current_date()
 +----------------+----------------+
 | user()         | current_date() |
 +----------------+----------------+
-| root@localhost | 2020-02-17     |
+| root@localhost | 2020-02-18     |
 +----------------+----------------+
 1 row in set (0.00 sec)
 
@@ -22,25 +22,25 @@ Database changed
 DROP TABLE IF EXISTS branch_staff
 --------------
 
-Query OK, 0 rows affected (0.06 sec)
+Query OK, 0 rows affected, 1 warning (0.01 sec)
 
 --------------
 DROP TABLE IF EXISTS computer_staff
 --------------
 
-Query OK, 0 rows affected (0.01 sec)
+Query OK, 0 rows affected, 1 warning (0.00 sec)
 
 --------------
 DROP TABLE IF EXISTS staff
 --------------
 
-Query OK, 0 rows affected (0.00 sec)
+Query OK, 0 rows affected, 1 warning (0.00 sec)
 
 --------------
 DROP TABLE IF EXISTS computer
 --------------
 
-Query OK, 0 rows affected (0.01 sec)
+Query OK, 0 rows affected, 1 warning (0.00 sec)
 
 --------------
 CREATE TABLE IF NOT EXISTS staff (
@@ -53,7 +53,7 @@ CREATE TABLE IF NOT EXISTS staff (
 )
 --------------
 
-Query OK, 0 rows affected (0.01 sec)
+Query OK, 0 rows affected (0.06 sec)
 
 --------------
 CREATE TABLE IF NOT EXISTS computer (
@@ -68,7 +68,7 @@ CREATE TABLE IF NOT EXISTS computer (
 )
 --------------
 
-Query OK, 0 rows affected (0.00 sec)
+Query OK, 0 rows affected (0.01 sec)
 
 --------------
 CREATE TABLE IF NOT EXISTS computer_staff (
@@ -80,7 +80,7 @@ CREATE TABLE IF NOT EXISTS computer_staff (
 )
 --------------
 
-Query OK, 0 rows affected (0.02 sec)
+Query OK, 0 rows affected (0.01 sec)
 
 --------------
 CREATE TABLE IF NOT EXISTS branch_staff (
@@ -94,10 +94,8 @@ CREATE TABLE IF NOT EXISTS branch_staff (
 
 Query OK, 0 rows affected (0.01 sec)
 
+Database changed
 --------------
-/* QUERY 2 */
-# USE library;
-
 INSERT INTO staff VALUES(
 	10001,'Stuart', 'Anne', '206-527-0010', 'Anne.Stuart@libray.com')
 --------------
@@ -116,7 +114,7 @@ INSERT INTO staff VALUES(
 	10004,'Stuart', 'Mary', '206-527-0012', 'Mary.Stuart@library.com')
 --------------
 
-Query OK, 1 row affected (0.00 sec)
+Query OK, 1 row affected (0.01 sec)
 
 --------------
 INSERT INTO staff VALUES(
@@ -175,7 +173,7 @@ INSERT INTO computer VALUES(
 		'6.0 GBytes', '1.0 TBytes')
 --------------
 
-Query OK, 1 row affected (0.01 sec)
+Query OK, 1 row affected (0.00 sec)
 
 --------------
 INSERT INTO computer VALUES(
@@ -223,7 +221,7 @@ INSERT INTO computer VALUES(
 		'8.0 GBytes', '1.0 TBytes')
 --------------
 
-Query OK, 1 row affected (0.00 sec)
+Query OK, 1 row affected (0.01 sec)
 
 --------------
 INSERT INTO computer VALUES(
@@ -266,6 +264,7 @@ INSERT INTO computer VALUES(
 Query OK, 1 row affected (0.00 sec)
 
 --------------
+		
 INSERT INTO computer_staff(serial_number, staff_id, date_assigned)
 		VALUES(9871256, 10006, '2015-09-14')
 --------------
@@ -284,7 +283,7 @@ INSERT INTO computer_staff(serial_number, staff_id, date_assigned)
 		VALUES(9871278, 10002, '2015-09-14')
 --------------
 
-Query OK, 1 row affected (0.01 sec)
+Query OK, 1 row affected (0.00 sec)
 
 --------------
 INSERT INTO computer_staff(serial_number, staff_id, date_assigned)
@@ -336,10 +335,13 @@ INSERT INTO computer_staff (serial_number, staff_id, date_assigned)
 Query OK, 1 row affected (0.00 sec)
 
 --------------
+		
+		
+
 INSERT INTO branch_staff (branch_id, staff_id, contact) VALUES(91234, 10001, '510-714-8321')
 --------------
 
-Query OK, 1 row affected (0.00 sec)
+Query OK, 1 row affected (0.01 sec)
 
 --------------
 INSERT INTO branch_staff (branch_id, staff_id, contact) VALUES(92345 , 10010, '510-987-0000 ')
@@ -430,7 +432,7 @@ DESC books
 ALTER TABLE staff MODIFY lname VARCHAR(30) NOT NULL
 --------------
 
-Query OK, 0 rows affected (0.23 sec)
+Query OK, 0 rows affected (0.22 sec)
 Records: 0  Duplicates: 0  Warnings: 0
 
 --------------
@@ -446,7 +448,7 @@ DESCRIBE staff
 | phone    | varchar(12) | YES  |     | NULL    |       |
 | email    | varchar(50) | YES  |     | NULL    |       |
 +----------+-------------+------+-----+---------+-------+
-5 rows in set (0.01 sec)
+5 rows in set (0.00 sec)
 
 --------------
 /* Query 6 */
@@ -482,7 +484,7 @@ SELECT serial_number, staff_id, date_assigned FROM computer_staff
 ALTER TABLE books DROP COLUMN date_added
 --------------
 
-Query OK, 0 rows affected (0.20 sec)
+Query OK, 0 rows affected (0.21 sec)
 Records: 0  Duplicates: 0  Warnings: 0
 
 --------------
@@ -511,17 +513,21 @@ SHOW TABLES
 | categories        |
 | computer          |
 | computer_staff    |
+| Customer          |
+| Hotel             |
 | publisher         |
+| Reservation       |
+| Room              |
 | staff             |
 +-------------------+
-14 rows in set (0.00 sec)
+18 rows in set (0.00 sec)
 
 --------------
 /* Query 10 */
 DROP TABLE IF EXISTS books_archive
 --------------
 
-Query OK, 0 rows affected (0.01 sec)
+Query OK, 0 rows affected (0.00 sec)
 
 --------------
 SHOW TABLES
@@ -541,9 +547,13 @@ SHOW TABLES
 | categories        |
 | computer          |
 | computer_staff    |
+| Customer          |
+| Hotel             |
 | publisher         |
+| Reservation       |
+| Room              |
 | staff             |
 +-------------------+
-13 rows in set (0.00 sec)
+17 rows in set (0.00 sec)
 
 mysql> notee;
