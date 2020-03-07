@@ -1,10 +1,9 @@
 /* Michael Vincent Rayo
    Assignment 8
-   Cs150A, Spring 2020
+   CS150A, Spring 2020
 */
 
 /* Query 0 */
-SELECT user(), current_date();
 USE bookstore;
 
 /* Query 1 */
